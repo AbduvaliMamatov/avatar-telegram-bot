@@ -23,7 +23,7 @@ public class BotHostedService(
             new ReceiverOptions
             {
                 DropPendingUpdates = true,
-                AllowedUpdates = [UpdateType.Message]
+                AllowedUpdates = new[] { UpdateType.Message, UpdateType.CallbackQuery }
             },
             cancellationToken: cancellationToken);
     }
