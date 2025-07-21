@@ -5,18 +5,20 @@ using Telegram.Bot.Polling;
 using TelegramBot;
 using System.Net.Http;
 using Microsoft.Extensions.Configuration;
-// using Microsoft.Extensions.Configuration.UserSecrets; // ❌ Endi kerak emas
 
 var builder = Host.CreateApplicationBuilder(args);
 
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-// builder.Configuration.AddUserSecrets<Program>(); // ❌ Endi kerak emas
+// ✅ appsettings.json optional qilib qo‘yildi
+builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
-// ⬇️ Tokenni .env yoki launchSettings.json dan olib o'qish
+// ✅ Railway tokenni logga chiqarish (debug uchun)
+Console.WriteLine($"DEBUG >> TELEGRAM_BOT_TOKEN = {Environment.GetEnvironmentVariable("TELEGRAM_BOT_TOKEN")}");
+
+// ✅ Environment orqali tokenni olish
 var botToken = Environment.GetEnvironmentVariable("TELEGRAM_BOT_TOKEN")
     ?? throw new ArgumentException("Telegram Bot Token is not configured.");
 
-// Konfiguratsiyadagi boshqa "Bot" bo'limini o'qish
+// ✅ appsettings.json ichidagi "Bot" bo‘limini DI orqali uzatish
 builder.Services.Configure<BotSettings>(builder.Configuration.GetSection("Bot"));
 
 builder.Services.AddSingleton<ITelegramBotClient>(new TelegramBotClient(botToken));
