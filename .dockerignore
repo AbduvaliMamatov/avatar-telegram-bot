@@ -1,0 +1,22 @@
+bin/
+obj/
+.vscode/
+.idea/
+*.user
+*.suo
+.git/
+.gitignore
+
+# Xavfsizlik uchun
+.env
+*.secrets.json
+appsettings.Development.json
+
+*.log
+*.db
+*.sqlite
+node_modules/
+dist/
+build/
+Thumbs.db
+.DS_Store

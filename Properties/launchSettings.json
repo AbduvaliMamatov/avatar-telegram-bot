@@ -1,10 +1,12 @@
 {
   "profiles": {
-    "Local": {
+    "TelegramBot": {
       "commandName": "Project",
       "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
-        "DOTNET_ENVIRONMENT": "Development"
+        "TELEGRAM_BOT_TOKEN": "7544851023:AAF857A1CIA8NdKymWBViVzAhVrZ8UEQ5tY"
       }
     }
   }
